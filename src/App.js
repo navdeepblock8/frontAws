@@ -1,26 +1,39 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: "",
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+  
+  handleClick() {
+    fetch('35.154.170.215:3000/pp')
+      .then(response => response.json())
+    .then(data => this.setState({ data }));
+    
+    
+  }
+
+  render() {
+    const { data } = this.state
+    return (
+      <>
+         <h1>Welcome to Fun Lottery</h1>
+         <h2>See If you are Lucky</h2>
+
+        <button onClick={this.handleClick}>CLICK ON ME!!</button>
+        <p>{data}</p>
+      </>
+    );
+  }
+
 }
+
+
 
 export default App;
