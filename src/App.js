@@ -12,7 +12,7 @@ class App extends React.Component {
   }
   
   handleClick() {
-    fetch('35.154.170.215:3000/pp')
+    fetch('http://13.127.29.189:3000/pp')
       .then(response => response.json())
     .then(data => this.setState({ data }));
     
